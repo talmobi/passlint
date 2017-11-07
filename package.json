@@ -1,6 +1,6 @@
 {
   "name": "passlint",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "parse only basic fundamental linting errors, passlint",
   "main": "passlint.js",
   "bin": {
