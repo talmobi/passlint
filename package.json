@@ -1,0 +1,35 @@
+{
+  "name": "passlint",
+  "version": "0.0.1",
+  "description": "parse only basic fundamental linting errors, passlint",
+  "main": "passlint.js",
+  "bin": {
+    "passlint": "./bin/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "spacestandard"
+  ],
+  "author": "talmobi <talmo.christian@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/talmobi/passlint"
+  },
+  "homepage": "https://github.com/talmobi/passlint",
+  "bugs": {
+    "url": "https://github.com/talmobi/passlint/issues",
+    "email": "talmo.christian@gmail.com"
+  },
+  "dependencies": {
+    "eslint": "^4.6.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "standard-engine": "^7.1.0"
+  },
+  "devDependencies": {}
+}
