@@ -1,6 +1,6 @@
 {
   "name": "passlint",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "parse only basic fundamental linting errors, passlint",
   "main": "passlint.js",
   "bin": {
@@ -24,12 +24,12 @@
     "email": "talmo.christian@gmail.com"
   },
   "dependencies": {
-    "eslint": "^4.6.1",
-    "eslint-plugin-import": "^2.7.0",
-    "eslint-plugin-node": "^5.1.1",
-    "eslint-plugin-promise": "^3.5.0",
-    "eslint-plugin-standard": "^3.0.1",
-    "standard-engine": "^7.1.0"
+    "eslint": "~4.6.1",
+    "eslint-plugin-import": "~2.7.0",
+    "eslint-plugin-node": "~5.1.1",
+    "eslint-plugin-promise": "~3.5.0",
+    "eslint-plugin-standard": "~3.0.1",
+    "standard-engine": "~7.1.0"
   },
   "devDependencies": {}
 }
