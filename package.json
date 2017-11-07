@@ -10,7 +10,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "spacestandard"
+    "passlint",
+    "eslint",
+    "standard-engine"
   ],
   "author": "talmobi <talmo.christian@gmail.com>",
   "license": "MIT",
