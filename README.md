@@ -1,6 +1,6 @@
 # passlint
 
-Parse a small subset of absolute errors
+Parse a small subset of absolute errors - if this fails your code is definitely not going to work, probably.
 
 AKA an eslintrc that looks like this:
 
