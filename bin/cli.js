@@ -17,6 +17,10 @@ var cli = new CLIEngine( {
 
 // console.log( argv )
 
+if ( argv._.length <= 0 ) {
+  argv._.push( '**/*.js' ) // default all js files
+}
+
 var report = cli.executeOnFiles( argv._ )
 
 // console.log( 'fixable count: ' + report.fixableErrorCount )
@@ -34,7 +38,6 @@ report.results.forEach( function ( result ) {
 
   process.stderr.write( buffer )
 } )
-
 
 if ( report.errorCount !== 0 ) {
   process.exit( 1 )
