@@ -1,6 +1,6 @@
 {
   "name": "passlint",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Lint only serious errors that will definitely break your code, probably.",
   "main": "passlint.js",
   "bin": {
