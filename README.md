@@ -1,3 +1,4 @@
+
 # passlint
 
 Parse a small subset of absolute errors - if this fails your code is definitely not going to work, probably.
@@ -8,6 +9,11 @@ AKA an eslintrc that looks like this:
 {
   "rules": {}
 }
+```
+
+# Easy to use
+```bash
+passlint **/*.js
 ```
 
 # Install
@@ -24,4 +30,4 @@ npm install -g passlint
 
 # How
 
-eslint and standard-engine
+eslint
