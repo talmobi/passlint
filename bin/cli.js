@@ -1,46 +1,42 @@
 #!/usr/bin/env node
 
-var parseArgs = require( 'minimist' )
+var fs = require( 'fs' )
+var check = require( 'syntax-error' )
 
-// parse the command line arguments ( with minimist )
-var argv = parseArgs( process.argv.slice( 2 ), {
-  boolean: true
+var argv = require( 'minimist' )( process.argv.slice( 2 ), {
+  alias: {
+    'ecmaVersion': [ 'e', 'ev', 'ecma', 'ecmaversion', 'ecma-version' ]
+  },
+  default: {
+    'ecmaVersion': 6 // 2015
+  }
 } )
 
-var CLIEngine = require( 'eslint' ).CLIEngine
-
-var cli = new CLIEngine( {
-  fix: !!argv[ 'fix' ],
-  useEslintrc: false,
-  rules: {}
-} )
-
-// console.log( argv )
 
 if ( argv._.length <= 0 ) {
-  argv._.push( '**/*.js' ) // default all js files
+  argv._ = argv._.concat( require( 'glob' ).sync( '**/*.js' ) ) // default all js files
 }
 
-var report = cli.executeOnFiles( argv._ )
-
-// console.log( 'fixable count: ' + report.fixableErrorCount )
-
-report.results.forEach( function ( result ) {
-  var file = result.filePath
-
-  var buffer = ''
-
-  result.messages.forEach( function ( msg ) {
-    buffer += (
-      '  ' + file + ':' + msg.line + ':' + msg.column + ': ' + msg.message + '\n'
-    )
+var buffer = ''
+var exitCode = 0
+argv._.forEach( function ( file ) {
+  var text = fs.readFileSync( file, 'utf8' )
+  var err = check( text, file, {
+    ecmaVersion: argv[ 'ecmaVersion' ]
   } )
 
-  process.stderr.write( buffer )
+  if ( err ) {
+    buffer += (
+      '  ' + file + ':' + err.line + ':' + err.column + ': ' + err.message + '\n'
+    )
+  }
 } )
 
-if ( report.errorCount !== 0 ) {
-  process.exit( 1 )
+process.stderr.write( buffer )
+
+if ( buffer === '' ) {
+  process.exit( 0 ) // no errors
 } else {
-  process.exit( 0 )
+  process.exit( 1 )
 }
+
