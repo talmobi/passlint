@@ -36,6 +36,16 @@ Even with linting setup not everything gets fixed or gets forgotten.
 
 passlint is the dirty final gate that needs to be passed for your code to run regardless of style rules.
 
+# Alternatives
+
+You can use node's `-c` flag for similar functionality.
+Note the variablity between node versions, passlint tests against ES 2015 by default
+and also parses the output more concisely.
+
+```bash
+node -c **/*.js
+```
+
 # How
 
 acorn, syntax-error
