@@ -29,6 +29,13 @@ globally
 npm install -g passlint
 ```
 
+# Why
+
+To quickly capture absolutely essential errors. Some projects have messy or no linting rules at all.
+Even with linting setup not everything gets fixed or gets forgotten.
+
+passlint is the dirty final gate that needs to be passed for your code to run regardless of style rules.
+
 # How
 
 acorn, syntax-error
