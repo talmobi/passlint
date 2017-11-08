@@ -14,11 +14,12 @@ var argv = require( 'minimist' )( process.argv.slice( 2 ), {
 
 
 if ( argv._.length <= 0 ) {
-  argv._ = argv._.concat( require( 'glob' ).sync( '**/*.js' ) ) // default all js files
+  console.error( 'Error! no files supplied - try `passlint **/*.js`' )
+  process.exit( 1 )
+  // argv._ = argv._.concat( require( 'glob' ).sync( '**/*.js' ) ) // default all js files
 }
 
 var buffer = ''
-var exitCode = 0
 argv._.forEach( function ( file ) {
   var text = fs.readFileSync( file, 'utf8' )
   var err = check( text, file, {
