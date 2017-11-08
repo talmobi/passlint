@@ -1,19 +1,20 @@
 
 # passlint
 
-Parse a small subset of absolute errors - if this fails your code is definitely not going to work, probably.
+Quickly check syntax errors with acorn ( syntax-error ) - if this fails your code is definitely not going to work, probably.
 
-AKA an eslintrc that looks like this:
-
-```json
-{
-  "rules": {}
-}
-```
+Default ECMAScript version is 6 ( 2015 ) - change it with `-e <number>` argument variable
 
 # Easy to use
 ```bash
+passlint **/*.js && echo 'no errors was found'
+```
+
+# Sample output
+```bash
 passlint **/*.js
+  components/mics.js:245:7: Unexpected token
+  js/admin-controller.js:2:1: Unexpected token
 ```
 
 # Install
@@ -30,4 +31,4 @@ npm install -g passlint
 
 # How
 
-eslint
+acorn, syntax-error
