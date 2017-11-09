@@ -1,0 +1,1 @@
+console.error("SyntaxError: /Users/mollie/code/miru/test/stage/app.js: Unexpected token, expected ; (2:20) while parsing file: /Users/mollie/code/miru/test/stage/app.js");
