@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
-var fs = require( 'fs' )
-var check = require( 'syntax-error' )
+var passlint = require( '../passlint.js' )
 
 var argv = require( 'minimist' )( process.argv.slice( 2 ), {
   alias: {
@@ -12,7 +11,6 @@ var argv = require( 'minimist' )( process.argv.slice( 2 ), {
   }
 } )
 
-
 if ( argv._.length <= 0 ) {
   console.error( 'Error! no files supplied - try `passlint **/*.js`' )
   process.exit( 1 )
@@ -21,15 +19,17 @@ if ( argv._.length <= 0 ) {
 
 var buffer = ''
 argv._.forEach( function ( file ) {
-  var text = fs.readFileSync( file, 'utf8' )
-  var err = check( text, file, {
-    ecmaVersion: argv[ 'ecmaVersion' ]
-  } )
+  var errline
+  try {
+    errline = passlint( file, argv[ 'ecmaVersion' ] )
+  } catch ( err ) {
+    console.error( err.message.trim() )
+    process.exit( 1 )
+  }
 
-  if ( err ) {
-    buffer += (
-      '  ' + file + ':' + err.line + ':' + err.column + ': ' + err.message + '\n'
-    )
+  if ( errline ) {
+    // TODO wooster piping working
+    buffer += ( errline + '\n' )
   }
 } )
 
@@ -40,4 +40,3 @@ if ( buffer === '' ) {
 } else {
   process.exit( 1 )
 }
-
