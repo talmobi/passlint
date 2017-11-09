@@ -6,6 +6,10 @@
   "bin": {
     "passlint": "./bin/cli.js"
   },
+  "files": [
+    "passlint.js",
+    "bin/cli.js"
+  ],
   "scripts": {
     "lint": "spacestandard --fix test/test.js passlint.js bin/cli.js",
     "prepublish": "npm run lint && npm test",
