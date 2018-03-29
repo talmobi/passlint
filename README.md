@@ -1,3 +1,5 @@
+[![npm](https://img.shields.io/npm/v/passlint.svg?maxAge=3600&style=flat-square)](https://www.npmjs.com/package/passlint)
+[![npm](https://img.shields.io/npm/l/passlint.svg?maxAge=3600&style=flat-square)](https://github.com/talmobi/passlint/blob/master/LICENSE)
 
 # passlint
 
@@ -5,19 +7,19 @@ Quickly check syntax errors with acorn ( syntax-error ) - if this fails your cod
 
 Default ECMAScript version is 6 ( 2015 ) - change it with `-e <number>` argument variable
 
-# Easy to use
+## Easy to use
 ```bash
 passlint **/*.js && echo 'no errors was found'
 ```
 
-# Sample output
+## Example
 ```bash
 passlint **/*.js
   components/mics.js:245:7: Unexpected token
   js/admin-controller.js:2:1: Unexpected token
 ```
 
-# Install
+## Install
 
 locally ( project specific, for use with npm scripts )
 ```bash
@@ -29,23 +31,29 @@ globally
 npm install -g passlint
 ```
 
-# Why
+## Why
 
 To quickly capture absolutely essential errors. Some projects have messy or no linting rules at all.
 Even with linting setup not everything gets fixed or gets forgotten.
 
 passlint is the dirty final gate that needs to be passed for your code to run regardless of style rules.
 
-# Alternatives
+## Alternatives
 
 You can use node's `-c` flag for similar functionality.
 Note the variablity between node versions, passlint tests against ES 2015 by default
-and also parses the output more concisely.
+and also formats the output more concisely.
 
 ```bash
 node -c **/*.js
 ```
 
-# How
+## How
+[acorn](https://github.com/acornjs/acorn)
 
-acorn, syntax-error
+[syntax-error](https://github.com/browserify/syntax-error)
+
+## Test
+```
+npm test
+```
