@@ -1,5 +1,3 @@
-var fs = require( 'fs' )
-var path = require( 'path' )
 var check = require( 'syntax-error' )
 
 module.exports = function ( text, ecmaVersion ) {

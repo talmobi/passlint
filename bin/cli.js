@@ -6,7 +6,6 @@ var _fs = require( 'fs' )
 var _path = require( 'path' )
 var _pkg = require( '../package.json' )
 
-
 var argv = require( 'minimist' )( process.argv.slice( 2 ), {
   alias: {
     'ecmaVersion': [ 'e', 'ev', 'ecma', 'ecmaversion', 'ecma-version' ],
