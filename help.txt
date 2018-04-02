@@ -1,0 +1,12 @@
+Usage: passlint [optinos]
+
+Arguments:
+
+--ecma-version, -e <number>     specify ecma version to check against
+                                defaults to 6 ( 2015 )
+
+                                example: `passlint -e 6 src/**`
+
+--version, -V                   print version and exit
+
+--help, -h                      help ( this text )
