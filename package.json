@@ -7,6 +7,7 @@
     "passlint": "./bin/cli.js"
   },
   "files": [
+    "help.txt",
     "passlint.js",
     "bin/cli.js"
   ],
