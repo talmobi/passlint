@@ -23,8 +23,10 @@ passlint **/*.js
 ```javascript
 var passlint = require( 'passlint' )
 var defaultEcmaVersion = 6 // 2015
-var errline = passlint( 'test/output.js', defaultEcmaVersion )
-if ( errline ) console.error( errline )
+var filename = 'test/output.js'
+var text = require( 'fs' ).readFileSync( filename, 'utf8' )
+var errline = passlint( text, defaultEcmaVersion )
+if ( errline ) console.error( filename + errline )
 ```
 ```
   test/output.js:484:40: ParseError: Unexpected token
