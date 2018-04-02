@@ -19,6 +19,34 @@ passlint **/*.js
   js/admin-controller.js:2:1: Unexpected token
 ```
 
+## API
+```javascript
+var passlint = require( 'passlint' )
+var defaultEcmaVersion = 6 // 2015
+var errline = passlint( 'test/output.js', defaultEcmaVersion )
+if ( errline ) console.error( errline )
+```
+```
+  test/output.js:484:40: ParseError: Unexpected token
+```
+
+## Arguments
+```
+$ passlint --help
+Usage: passlint [optinos]
+
+Arguments:
+
+--ecma-version, -e <number>     specify ecma version to check against
+                                defaults to 6 ( 2015 )
+
+                                example: `passlint -e 6 src/**`
+
+--version, -V                   print version and exit
+
+--help, -h                      help ( this text )
+```
+
 ## Install
 
 locally ( project specific, for use with npm scripts )
