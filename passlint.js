@@ -2,10 +2,8 @@ var fs = require( 'fs' )
 var path = require( 'path' )
 var check = require( 'syntax-error' )
 
-module.exports = function ( file, ecmaVersion ) {
-  var text = fs.readFileSync( path.resolve( file ), 'utf8' )
-
-  var err = check( text, file, {
+module.exports = function ( text, ecmaVersion ) {
+  var err = check( text, '', {
     ecmaVersion: ecmaVersion || 6 // 2015
   } )
 
@@ -34,7 +32,7 @@ module.exports = function ( file, ecmaVersion ) {
     }
 
     return (
-      '  ' + file + ':' + err.line + ':' + err.column + ': ' + err.message
+      err.line + ':' + err.column + ': ' + err.message
     )
   }
 
