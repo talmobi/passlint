@@ -6,7 +6,7 @@ module.exports = function ( file, ecmaVersion ) {
   var text = fs.readFileSync( path.resolve( file ), 'utf8' )
 
   var err = check( text, file, {
-    ecmaVersion: ecmaVersion
+    ecmaVersion: ecmaVersion || 6 // 2015
   } )
 
   if ( err ) {
