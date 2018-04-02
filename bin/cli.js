@@ -4,12 +4,38 @@ var passlint = require( '../passlint.js' )
 
 var argv = require( 'minimist' )( process.argv.slice( 2 ), {
   alias: {
-    'ecmaVersion': [ 'e', 'ev', 'ecma', 'ecmaversion', 'ecma-version' ]
+    'ecmaVersion': [ 'e', 'ev', 'ecma', 'ecmaversion', 'ecma-version' ],
+    'version': [ 'V' ],
+    'help': [ 'h' ]
   },
   default: {
     'ecmaVersion': 6 // 2015
   }
 } )
+
+if ( argv[ 'help' ] ) {
+  var _fs = require( 'fs' )
+  var _path = require( 'path' )
+
+  console.log(
+    _fs.readFileSync(
+      _path.join( __dirname, '../help.txt' ),
+      'utf8'
+    )
+  )
+
+  process.exit()
+}
+
+if ( argv[ 'version' ] ) {
+  var pkg = require( '../package.json' )
+
+  console.log(
+    pkg.name + ' version: ' + pkg.version
+  )
+
+  process.exit()
+}
 
 if ( argv._.length <= 0 ) {
   console.error( 'Error! no files supplied - try `passlint **/*.js`' )
