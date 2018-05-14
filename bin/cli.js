@@ -11,9 +11,6 @@ var argv = require( 'minimist' )( process.argv.slice( 2 ), {
     'ecmaVersion': [ 'e', 'ev', 'ecma', 'ecmaversion', 'ecma-version' ],
     'version': [ 'V' ],
     'help': [ 'h' ]
-  },
-  default: {
-    'ecmaVersion': 6 // 2015
   }
 } )
 
