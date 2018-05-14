@@ -31,7 +31,7 @@ test( 'run CLI with 1 file ( error )', function ( t ) {
 
   exec( cliPath + ' ' + file1, function ( err, buffer ) {
     t.ok( err, 'error found' )
-    t.equal( buffer, file1 + ':2:21: ParseError: Unexpected token' )
+    t.equal( buffer, file1 + ':2:20: SyntaxError: Unexpected token (2:20)' )
     t.end()
   } )
 } )
@@ -56,7 +56,7 @@ test( 'run CLI with 2 files ( error )', function ( t ) {
 
   exec( cliPath + ' ' + file1 + ' ' + file2, function ( err, buffer ) {
     t.ok( err, 'error found' )
-    t.equal( buffer, file2 + ':245:7: ParseError: Unexpected token' )
+    t.equal( buffer, file2 + ':245:6: SyntaxError: Unexpected token (245:6)' )
     t.end()
   } )
 } )
@@ -94,9 +94,9 @@ test( 'run CLI with * files ( error )', function ( t ) {
     t.equal(
       buffer,
       (
-        ( file1 + ':2:21: ParseError: Unexpected token' ) +
+        ( file1 + ':2:20: SyntaxError: Unexpected token (2:20)' ) +
         '\n  ' +
-        ( file2 + ':245:7: ParseError: Unexpected token' )
+        ( file2 + ':245:6: SyntaxError: Unexpected token (245:6)' )
       )
     )
     t.end()
