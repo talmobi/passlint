@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "acorn": "~5.5.3",
+    "csslint": "~1.0.5",
     "minimist": "~1.2.0"
   },
   "devDependencies": {

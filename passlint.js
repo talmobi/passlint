@@ -1,6 +1,11 @@
 var acorn = require( 'acorn' )
 
-module.exports = function ( text, ecmaVersion ) {
+var csslint = require( 'csslint' )
+var CSSLint = csslint.CSSLint
+
+module.exports = passlint
+
+function testjs ( text, ecmaVersion ) {
   var options = {
     ecmaVersion: ecmaVersion || 6
   }
@@ -42,4 +47,40 @@ module.exports = function ( text, ecmaVersion ) {
   }
 
   return ''
+}
+
+function testcss ( text ) {
+  var result = CSSLint.verify( text )
+  var messages = result.messages
+  var errors = messages.filter(
+    function ( m ) { return m.type === 'error' }
+  )
+
+  var err = errors[ 0 ]
+
+  if ( err ) {
+    // add 'error' to the error message if it doesn't exist
+    if ( err.message.toLowerCase().indexOf( 'error' ) === -1 ) {
+      err.message = ( 'error: ' + err.message )
+    }
+
+    var loc = err
+
+    return (
+      loc.line + ':' + loc.col + ': ' + err.message
+    )
+  }
+
+  return ''
+}
+
+function passlint ( text, opts ) {
+  switch ( opts ) {
+    case 'css':
+    case 'style':
+    case 'CSS':
+      return testcss( text )
+  }
+
+  return testjs( text, ecmaVersion )
 }
