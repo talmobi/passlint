@@ -82,5 +82,5 @@ function passlint ( text, opts ) {
       return testcss( text )
   }
 
-  return testjs( text, ecmaVersion )
+  return testjs( text, opts )
 }
