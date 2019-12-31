@@ -1,0 +1,203 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #222;
+  color: #eee;
+}
+.app {
+  margin: 0 auto;
+  padding: 0;
+  margin-top: 100px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-flow: column nowrap;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  max-width: 800px;
+}
+.container {
+  margin: 0;
+  padding: 0;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row nowrap;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  width: 100%;
+  min-height: 100px;
+  background: #ffc0cb;
+}
+.converted-images {
+  list-style: none;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row wrap;
+  -webkit-box-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: center;
+          align-items: center;
+}
+.converted-images__item {
+  width: 50px;
+  height: 50px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row nowrap;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+}
+.converted-images__item img {
+  width: inherit;
+  height: inherit;
+}
+img.mediaid-error {
+  background: #f00;
+  background: #faba33;
+}
+img.mediaid-hover {
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
+  opacity: 1 !important;
+}
+.image-upload-url-target {
+  width: 100%;
+  height: 2rem;
+  margin-top: 1rem;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row nowrap;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  padding: 4px 4px 4px 4px;
+  border: 1px solid #222;
+}
+.image-upload-url-target input {
+  margin-left: 1px;
+  margin-right: 1px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  width: 100%;
+  height: 100%;
+  font-size: 1.725rem;
+}
+.image-upload-drop-target {
+  background: #55bada;
+  margin-top: 1rem;
+  width: 300px;
+  min-height: 200px;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+          flex-flow: row nowrap;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  padding: 2rem 0;
+  border: 1px solid #222;
+}
+.image-upload-drop-target img {
+  pointer-events: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  width: 300px;
+  height: 200px;
+  opacity: 0.5;
+}
+.dragover {
+  background: #bada55;
+}
+#screen {
+  margin-top: 8px;
+  border: 1px solid #222;
+  max-width: 300px;
+  max-height: 168px;
+  min-width: 300px;
+  min-height: 168px;
+}
+#preview {
+  width: 300px;
+  height: 168px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  margin-top: 8px;
+  border: 1px solid #222;
+  background: #f0f;
+  background-image: linear-gradient(45deg, #808080 25%, transparent 25%), linear-gradient(-45deg, #808080 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #808080 75%), linear-gradient(-45deg, transparent 75%, #808080 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+}
+.pixel {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #222;
+}
+.thumbnail {
+  margin-top: 8px;
+  margin-bottom: 8px;
+  background: #008000;
+  background-size: cover;
+  min-width: 100px;
+  min-height: 100px;
+  border: 1px solid #222;
+  pointer-events: all;
+  -webkit-user-select: all;
+     -moz-user-select: all;
+      -ms-user-select: all;
+          user-select: all;
+}
+.smart-image {
+  position: absolute;
+  overflow: hidden;
+}
+.smart-image__preview,
+.smart-image__full {
+  position: relative;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: inherit;
+  height: inherit;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+.smart-image__full {
+  -webkit-transition: opacity 0.5s ease-in;
+  transition: opacity 0.5s ease-in;
+}
+#example-container {
+  position: relative;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  min-width: 100px;
+  min-height: 100px;
+  width: 500px;
+  height: 500px;
+  overflow: hidden;
+  background: #0ff;
+  border: 1px solid #222;
+}
