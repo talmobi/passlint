@@ -102,3 +102,27 @@ test( 'run CLI with * files ( error )', function ( t ) {
     t.end()
   } )
 } )
+
+test( 'run CLI with 1 file (css) ( error )', function ( t ) {
+  t.timeoutAfter( 1000 )
+
+  var file1 = path.join( __dirname, 'stage', 'bundle-error.css' )
+
+  exec( cliPath + ' ' + file1, function ( err, buffer ) {
+    t.ok( err, 'error found' )
+    t.equal( buffer, file1 + ':40:20: error: Expected RBRACE at line 40, col 20.' )
+    t.end()
+  } )
+} )
+
+test( 'run CLI with 1 file (css) ( success )', function ( t ) {
+  t.timeoutAfter( 1000 )
+
+  var file1 = path.join( __dirname, 'stage', 'bundle.css' )
+
+  exec( cliPath + ' ' + file1, function ( err, buffer ) {
+    t.error( err )
+    t.equal( buffer, '' )
+    t.end()
+  } )
+} )
