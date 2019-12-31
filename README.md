@@ -15,8 +15,8 @@ passlint **/*.js && echo 'no errors was found'
 ## Example
 ```bash
 passlint **/*.js
-  components/mics.js:245:7: Unexpected token
-  js/admin-controller.js:2:1: Unexpected token
+  components/mics.js:245:7: SyntaxError: Unexpected token (245:7)
+  js/admin-controller.js:2:1: SyntaxError: Unexpected token (2:1)
 ```
 
 ## API
@@ -29,7 +29,7 @@ var errline = passlint( text, defaultEcmaVersion )
 if ( errline ) console.error( filename + errline )
 ```
 ```
-  test/output.js:484:40: ParseError: Unexpected token
+  test/output.js:484:40: SyntaxError: Unexpected token (484:40)
 ```
 
 ## Arguments
