@@ -45,7 +45,13 @@ argv._.forEach( function ( file ) {
 
   try {
     var text = _fs.readFileSync( _path.resolve( file ), 'utf8' )
-    errline = _passlint( text, argv[ 'ecmaVersion' ] )
+
+    var suffix = _path.extname( file )
+    if ( suffix.toLowerCase().indexOf( 'css' ) >= 0 ) {
+      errline = _passlint( text, 'css' )
+    } else {
+      errline = _passlint( text, argv[ 'ecmaVersion' ] )
+    }
   } catch ( err ) {
     console.error( err.message.trim() )
     process.exit( 1 )
