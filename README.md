@@ -26,7 +26,7 @@ passlint **/*.js **/*.css
 
 ## API
 
-#### JavaScript
+#### Test JavaScript files
 ```javascript
 var passlint = require( 'passlint' )
 
@@ -41,7 +41,7 @@ if ( errline ) console.error( filename + errline )
   stage/bundle-error.css:182:10: error: Expected COLON at line 182, col 10.
 ```
 
-#### CSS
+#### Test CSS files
 ```javascript
 var passlint = require( 'passlint' )
 
