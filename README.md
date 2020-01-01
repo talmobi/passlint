@@ -9,19 +9,27 @@ Default ECMAScript version is 6 ( 2015 ) - change it with `-e <number>` argument
 
 ## Easy to use
 ```bash
-passlint **/*.js && echo 'no errors was found'
+passlint **/*.js && echo 'no javascript errors was found'
+```
+
+```bash
+passlint **/*.css && echo 'no css errors was found'
 ```
 
 ## Example
 ```bash
-passlint **/*.js
+passlint **/*.js **/*.css
   components/mics.js:245:7: SyntaxError: Unexpected token (245:7)
   js/admin-controller.js:2:1: SyntaxError: Unexpected token (2:1)
+  public/bundle.css:40:20: error: Expected RBRACE at line 40, col 20.
 ```
 
 ## API
+
+#### JavaScript
 ```javascript
 var passlint = require( 'passlint' )
+
 var defaultEcmaVersion = 6 // 2015
 var filename = 'test/output.js'
 var text = require( 'fs' ).readFileSync( filename, 'utf8' )
@@ -30,6 +38,20 @@ if ( errline ) console.error( filename + errline )
 ```
 ```
   test/output.js:484:40: SyntaxError: Unexpected token (484:40)
+  stage/bundle-error.css:182:10: error: Expected COLON at line 182, col 10.
+```
+
+#### CSS
+```javascript
+var passlint = require( 'passlint' )
+
+var filename = 'stage/bundle-error.css'
+var text = require( 'fs' ).readFileSync( filename, 'utf8' )
+var errline = passlint( text, 'css' )
+if ( errline ) console.error( filename + errline )
+```
+```
+  stage/bundle-error.css:182:10: error: Expected COLON at line 182, col 10.
 ```
 
 ## Arguments
@@ -82,6 +104,8 @@ node -c **/*.js
 [acorn](https://github.com/acornjs/acorn)
 
 [syntax-error](https://github.com/browserify/syntax-error)
+
+[csslint](https://github.com/CSSLint/csslint)
 
 ## Test
 ```
