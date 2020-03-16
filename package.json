@@ -34,7 +34,7 @@
     "email": "talmo.christian@gmail.com"
   },
   "dependencies": {
-    "acorn": "~5.5.3",
+    "acorn": "~5.7.4",
     "csslint": "~1.0.5",
     "minimist": "~1.2.0"
   },
