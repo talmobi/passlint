@@ -34,9 +34,10 @@
     "email": "talmo.christian@gmail.com"
   },
   "dependencies": {
-    "acorn": "~5.5.3",
+    "acorn": "~7.1.1",
+    "babel-core": "~6.26.3",
     "csslint": "~1.0.5",
-    "minimist": "~1.2.0"
+    "minimist": "~1.2.5"
   },
   "devDependencies": {
     "babel-preset-env": "~1.6.1",
