@@ -126,3 +126,33 @@ test( 'run CLI with 1 file (css) ( success )', function ( t ) {
     t.end()
   } )
 } )
+
+test( 'run CLI with 2 files globbed ( error )', function ( t ) {
+  t.timeoutAfter( 1000 )
+
+  var file1 = path.join( __dirname, 'stage', 'bundle.js' )
+  var file2 = path.join( __dirname, 'stage', 'mics-error.js' )
+
+  exec( cliPath + ' **/stage/mics*.js', function ( err, buffer ) {
+    t.ok( err, 'error found' )
+    t.equal( buffer, file2 + ':245:6: SyntaxError: Unexpected token (245:6)' )
+    t.end()
+
+    console.log()
+    console.log( buffer )
+    console.log()
+  } )
+} )
+
+test( 'run CLI with 2 files globbed ( success )', function ( t ) {
+  t.timeoutAfter( 1000 )
+
+  var file1 = path.join( __dirname, 'stage', 'bundle.js' )
+  var file2 = path.join( __dirname, 'stage', 'mics.js' )
+
+  exec( cliPath + ' **/stage/*n*.js', function ( err, buffer ) {
+    t.error( err )
+    t.equal( buffer, '' )
+    t.end()
+  } )
+} )
