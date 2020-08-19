@@ -45,8 +45,6 @@ var buffer = ''
 function checkFile ( file ) {
   var errline
 
-  file = _path.resolve( process.cwd(), file )
-
   try {
     var text = _fs.readFileSync( _path.resolve( file ), 'utf8' )
 
@@ -60,6 +58,8 @@ function checkFile ( file ) {
     console.error( err.message.trim() )
     process.exit( 1 )
   }
+
+  file = _path.relative( process.cwd(), file )
 
   if ( errline ) {
     // TODO wooster piping working

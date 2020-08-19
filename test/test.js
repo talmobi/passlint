@@ -27,19 +27,23 @@ test( 'run CLI without args ( error )', function ( t ) {
 test( 'run CLI with 1 file ( error )', function ( t ) {
   t.timeoutAfter( 1000 )
 
-  var file1 = path.join( __dirname, 'stage', 'app.js' )
+  var file1 = path.relative( process.cwd(), path.join( __dirname, 'stage', 'app.js' ) )
 
   exec( cliPath + ' ' + file1, function ( err, buffer ) {
     t.ok( err, 'error found' )
     t.equal( buffer, file1 + ':2:20: SyntaxError: Unexpected token (2:20)' )
     t.end()
+
+    console.log()
+    console.log( buffer )
+    console.log()
   } )
 } )
 
 test( 'run CLI with 1 file ( success )', function ( t ) {
   t.timeoutAfter( 1000 )
 
-  var file1 = path.join( __dirname, 'stage', 'bundle.js' )
+  var file1 = path.relative( process.cwd(), path.join( __dirname, 'stage', 'bundle.js' ) )
 
   exec( cliPath + ' ' + file1, function ( err, buffer ) {
     t.error( err )
@@ -51,8 +55,8 @@ test( 'run CLI with 1 file ( success )', function ( t ) {
 test( 'run CLI with 2 files ( error )', function ( t ) {
   t.timeoutAfter( 1000 )
 
-  var file1 = path.join( __dirname, 'stage', 'bundle.js' )
-  var file2 = path.join( __dirname, 'stage', 'mics-error.js' )
+  var file1 = path.relative( process.cwd(), path.join( __dirname, 'stage', 'bundle.js' ) )
+  var file2 = path.relative( process.cwd(), path.join( __dirname, 'stage', 'mics-error.js' ) )
 
   exec( cliPath + ' ' + file1 + ' ' + file2, function ( err, buffer ) {
     t.ok( err, 'error found' )
@@ -64,8 +68,8 @@ test( 'run CLI with 2 files ( error )', function ( t ) {
 test( 'run CLI with 2 files ( success )', function ( t ) {
   t.timeoutAfter( 1000 )
 
-  var file1 = path.join( __dirname, 'stage', 'bundle.js' )
-  var file2 = path.join( __dirname, 'stage', 'mics.js' )
+  var file1 = path.relative( process.cwd(), path.join( __dirname, 'stage', 'bundle.js' ) )
+  var file2 = path.relative( process.cwd(), path.join( __dirname, 'stage', 'mics.js' ) )
 
   exec( cliPath + ' ' + file1 + ' ' + file2, function ( err, buffer ) {
     t.error( err )
@@ -77,15 +81,15 @@ test( 'run CLI with 2 files ( success )', function ( t ) {
 test( 'run CLI with * files ( error )', function ( t ) {
   t.timeoutAfter( 1000 )
 
-  var file1 = path.join( __dirname, 'stage', 'app.js' )
-  var file2 = path.join( __dirname, 'stage', 'mics-error.js' )
+  var file1 = path.relative( process.cwd(), path.join( __dirname, 'stage', 'app.js' ) )
+  var file2 = path.relative( process.cwd(), path.join( __dirname, 'stage', 'mics-error.js' ) )
 
   var files = (
     'stage/app.js stage/bundle.js stage/mics-error.js stage/mics.js stage/miru-connect.js'
   )
     .split( ' ' )
     .map( function ( file ) {
-      return path.join( __dirname, file )
+      return path.relative( process.cwd(), path.join( __dirname, file ) )
     } )
     .join( ' ' )
 
@@ -106,7 +110,7 @@ test( 'run CLI with * files ( error )', function ( t ) {
 test( 'run CLI with 1 file (css) ( error )', function ( t ) {
   t.timeoutAfter( 1000 )
 
-  var file1 = path.join( __dirname, 'stage', 'bundle-error.css' )
+  var file1 = path.relative( process.cwd(), path.join( __dirname, 'stage', 'bundle-error.css' ) )
 
   exec( cliPath + ' ' + file1, function ( err, buffer ) {
     t.ok( err, 'error found' )
@@ -118,7 +122,7 @@ test( 'run CLI with 1 file (css) ( error )', function ( t ) {
 test( 'run CLI with 1 file (css) ( success )', function ( t ) {
   t.timeoutAfter( 1000 )
 
-  var file1 = path.join( __dirname, 'stage', 'bundle.css' )
+  var file1 = path.relative( process.cwd(), path.join( __dirname, 'stage', 'bundle.css' ) )
 
   exec( cliPath + ' ' + file1, function ( err, buffer ) {
     t.error( err )
@@ -130,8 +134,8 @@ test( 'run CLI with 1 file (css) ( success )', function ( t ) {
 test( 'run CLI with 2 files globbed ( error )', function ( t ) {
   t.timeoutAfter( 1000 )
 
-  var file1 = path.join( __dirname, 'stage', 'bundle.js' )
-  var file2 = path.join( __dirname, 'stage', 'mics-error.js' )
+  var file1 = path.relative( process.cwd(), path.join( __dirname, 'stage', 'bundle.js' ) )
+  var file2 = path.relative( process.cwd(), path.join( __dirname, 'stage', 'mics-error.js' ) )
 
   exec( cliPath + ' **/stage/mics*.js', function ( err, buffer ) {
     t.ok( err, 'error found' )
@@ -147,8 +151,8 @@ test( 'run CLI with 2 files globbed ( error )', function ( t ) {
 test( 'run CLI with 2 files globbed ( success )', function ( t ) {
   t.timeoutAfter( 1000 )
 
-  var file1 = path.join( __dirname, 'stage', 'bundle.js' )
-  var file2 = path.join( __dirname, 'stage', 'mics.js' )
+  var file1 = path.relative( process.cwd(), path.join( __dirname, 'stage', 'bundle.js' ) )
+  var file2 = path.relative( process.cwd(), path.join( __dirname, 'stage', 'mics.js' ) )
 
   exec( cliPath + ' **/stage/*n*.js', function ( err, buffer ) {
     t.error( err )
