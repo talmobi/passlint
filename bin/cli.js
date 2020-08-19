@@ -45,6 +45,8 @@ var buffer = ''
 function checkFile ( file ) {
   var errline
 
+  file = _path.resolve( process.cwd(), file )
+
   try {
     var text = _fs.readFileSync( _path.resolve( file ), 'utf8' )
 
