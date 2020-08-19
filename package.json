@@ -34,18 +34,18 @@
     "email": "talmo.christian@gmail.com"
   },
   "dependencies": {
+    "@babel/core": "~7.11.1",
     "acorn": "~7.1.1",
-    "babel-core": "~6.26.3",
     "csslint": "~1.0.5",
     "minimist": "~1.2.5"
   },
   "devDependencies": {
-    "babel-preset-env": "~1.6.1",
-    "babelify": "~8.0.0",
-    "browserify": "~14.5.0",
-    "faucet": "0.0.1",
-    "nyc": "~15.0.0",
-    "spacestandard": "0.0.6",
-    "tape": "~4.8.0"
+    "@babel/preset-env": "~7.11.0",
+    "@talmobi/faucet": "0.0.3",
+    "babelify": "~10.0.0",
+    "browserify": "~16.5.2",
+    "nyc": "~15.1.0",
+    "spacestandard": "~0.3.0",
+    "tape": "~5.0.1"
   }
 }
