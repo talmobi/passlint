@@ -83,6 +83,7 @@ argv._.forEach( function ( file ) {
 
     _glob( pattern, function ( err, files, dirs ) {
       finish.counter++
+      if ( err ) throw err
 
       finish.endLimit += files.length
       files.forEach( function ( file ) {

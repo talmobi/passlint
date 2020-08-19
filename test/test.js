@@ -134,7 +134,6 @@ test( 'run CLI with 1 file (css) ( success )', function ( t ) {
 test( 'run CLI with 2 files globbed ( error )', function ( t ) {
   t.timeoutAfter( 1000 )
 
-  var file1 = path.relative( process.cwd(), path.join( __dirname, 'stage', 'bundle.js' ) )
   var file2 = path.relative( process.cwd(), path.join( __dirname, 'stage', 'mics-error.js' ) )
 
   exec( cliPath + ' **/stage/mics*.js', function ( err, buffer ) {
@@ -150,9 +149,6 @@ test( 'run CLI with 2 files globbed ( error )', function ( t ) {
 
 test( 'run CLI with 2 files globbed ( success )', function ( t ) {
   t.timeoutAfter( 1000 )
-
-  var file1 = path.relative( process.cwd(), path.join( __dirname, 'stage', 'bundle.js' ) )
-  var file2 = path.relative( process.cwd(), path.join( __dirname, 'stage', 'mics.js' ) )
 
   exec( cliPath + ' **/stage/*n*.js', function ( err, buffer ) {
     t.error( err )
