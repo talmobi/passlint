@@ -45,6 +45,9 @@ var buffer = ''
 function checkFile ( file ) {
   var errline
 
+  finish.counter = finish.counter || 0 // init
+  finish.counter++ // increment
+
   try {
     var text = _fs.readFileSync( _path.resolve( file ), 'utf8' )
 
@@ -66,31 +69,32 @@ function checkFile ( file ) {
     buffer += ( '  ' + file + ':' + errline + '\n' )
   }
 
-  finish.counter = finish.counter || 0 // init
-  finish.counter++ // increment
-
-  // check for completion
-  if ( finish.counter >= finish.endLimit ) {
-    finish()
-  }
+  clearTimeout( finish.timeout )
+  finish.timeout = setTimeout( function () {
+    // check for completion
+    if ( finish.counter >= finish.endLimit ) {
+      finish()
+    }
+  }, 0 )
 }
 
 finish.endLimit = finish.endLimit || 0 // init
-finish.endLimit += argv._.length // increment
 argv._.forEach( function ( file ) {
   if ( _glob.hasMagic( file ) ) {
     var pattern = file
 
+    file.endLimit++
     _glob( pattern, function ( err, files, dirs ) {
-      finish.counter++
       if ( err ) throw err
+      finish.counter++
 
-      finish.endLimit += files.length
       files.forEach( function ( file ) {
+        finish.endLimit++
         checkFile( file )
       } )
     } )
   } else {
+    finish.endLimit++
     checkFile( file )
   }
 } )
