@@ -11,9 +11,12 @@ var _glob = require( 'redstar' )
 var argv = require( 'minimist' )( process.argv.slice( 2 ), {
   alias: {
     ecmaVersion: [ 'e', 'ev', 'ecma', 'ecmaversion', 'ecma-version' ],
+    absolutePath: [ 'absolute-path', 'P' ],
+    relativePath: [ 'path', 'p' ],
     version: [ 'V' ],
     help: [ 'h' ]
-  }
+  },
+  boolean: [ 'P', 'absolute-path', 'V', 'h' ]
 } )
 
 if ( argv.help ) {
@@ -62,7 +65,12 @@ function checkFile ( file ) {
     process.exit( 1 )
   }
 
-  file = _path.relative( process.cwd(), file )
+  if ( argv.absolutePath ) {
+    file = _path.resolve( file )
+  } else {
+    var dir = argv.relativePath ? _path.resolve( argv.relativePath ) : process.cwd()
+    file = './' + _path.relative( dir, file )
+  }
 
   if ( errline ) {
     // TODO wooster piping working
